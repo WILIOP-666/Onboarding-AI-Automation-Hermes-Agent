@@ -1140,6 +1140,26 @@ function Presentation({
             <p>{slide.body}</p>
           </div>
           <div className={`slide-visual slide-visual-${state.slide}`}>
+            {state.slide === 2 && (
+              <figure className="slide-brand">
+                <Image
+                  src="/images/hermes-agent-logo.svg"
+                  alt="Hermes Agent logo by NousResearch"
+                  width={128}
+                  height={128}
+                />
+                <figcaption>
+                  Hermes Agent ·{" "}
+                  <a
+                    href="https://github.com/NousResearch/hermes-agent/tree/main/assets"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    NousResearch
+                  </a>
+                </figcaption>
+              </figure>
+            )}
             {slide.visual.map((line, i) => (
               <div
                 className={i === 0 ? "visual-primary" : "visual-line"}

@@ -4395,3 +4395,40 @@ body {
     min-height: 44px;
   }
 }
+
+.slide-brand {
+  grid-column: 1 / -1;
+  width: 100%;
+  min-height: 142px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  margin: 0 0 2px;
+  border: 1px solid #d5d9cd;
+  border-radius: 10px;
+  background: #f3f4ed;
+}
+
+.slide-brand img {
+  width: 116px;
+  height: 116px;
+  object-fit: contain;
+  border-radius: 22px;
+}
+
+.slide-brand figcaption {
+  position: absolute;
+  right: 7px;
+  bottom: 7px;
+  padding: 4px 7px;
+  border-radius: 6px;
+  background: rgb(255 255 255 / 92%);
+  color: #374151;
+  font-size: 9px;
+}
+
+@media (max-width: 640px) {
+  .slide-brand {
+    min-height: 152px;
+  }
+}
