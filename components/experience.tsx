@@ -1166,7 +1166,37 @@ function Presentation({
                 </figcaption>
               </figure>
             )}
-            {state.slide === 6 ? (
+            {state.slide === 5 ? (
+              <div className="autonomy-diagram">
+                <span className="autonomy-diagram-label">
+                  AUTONOMY IS A DIAL
+                </span>
+                <ol>
+                  {[
+                    "Answers",
+                    "Writes code",
+                    "Reads repository",
+                    "Modifies + tests",
+                    "Investigates independently",
+                    "Runs a complete workflow",
+                  ].map((level, i) => (
+                    <li key={level}>
+                      <div
+                        className={`autonomy-rung ${i === 4 ? "autonomy-rung-target" : ""}`}
+                        style={{ width: `${47 + i * 8}%` }}
+                      >
+                        <span>{i}</span>
+                        <b>{level}</b>
+                        {i === 4 && <small>SESSION TARGET</small>}
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+                <span className="autonomy-diagram-foot">
+                  MORE CONTEXT · MORE AUTONOMY
+                </span>
+              </div>
+            ) : state.slide === 6 ? (
               <div className="workflow-diagram">
                 <span className="workflow-diagram-label">THE GOLDEN LOOP</span>
                 <ol>
