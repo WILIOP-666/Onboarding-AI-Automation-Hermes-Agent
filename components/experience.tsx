@@ -1166,15 +1166,39 @@ function Presentation({
                 </figcaption>
               </figure>
             )}
-            {slide.visual.map((line, i) => (
-              <div
-                className={i === 0 ? "visual-primary" : "visual-line"}
-                key={line}
-              >
-                <span className="visual-node" />
-                {line}
+            {state.slide === 6 ? (
+              <div className="workflow-diagram">
+                <span className="workflow-diagram-label">THE GOLDEN LOOP</span>
+                <ol>
+                  {[
+                    "Inspect",
+                    "Understand",
+                    "Plan",
+                    "Implement",
+                    "Test",
+                    "Audit",
+                    "Verify",
+                  ].map((step, i) => (
+                    <li key={step}>
+                      <span className="workflow-step-number">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span>{step}</span>
+                    </li>
+                  ))}
+                </ol>
               </div>
-            ))}
+            ) : (
+              slide.visual.map((line, i) => (
+                <div
+                  className={i === 0 ? "visual-primary" : "visual-line"}
+                  key={line}
+                >
+                  <span className="visual-node" />
+                  {line}
+                </div>
+              ))
+            )}
           </div>
         </div>
         <div className="slide-bottom">
