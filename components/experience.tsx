@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   useCallback,
@@ -693,9 +694,25 @@ function Overview({
             agent experience needed.
           </div>
         </div>
-        <div className="hero-art" aria-hidden="true">
-          <div className="art-orbit orbit-one" />
-          <div className="art-orbit orbit-two" />
+        <figure className="hero-art">
+          <Image
+            className="hero-photo"
+            src="/images/creative-workspace.jpg"
+            alt="Laptop, notebook, brushes, and colored pencils on a wooden creative workspace"
+            fill
+            priority
+            sizes="(max-width: 640px) 100vw, 45vw"
+          />
+          <figcaption className="photo-credit">
+            Photo by{" "}
+            <a
+              href="https://unsplash.com/photos/a-desk-with-a-laptop-and-pencils-on-it-T8TxcGtUW2I"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Olya P · Unsplash
+            </a>
+          </figcaption>
           <div className="terminal-window">
             <div className="terminal-head">
               <span />
@@ -720,7 +737,7 @@ function Overview({
           <div className="art-tag">
             <span className="live-dot" /> HUMAN REVIEW INCLUDED
           </div>
-        </div>
+        </figure>
       </section>
       <div className="stats-row">
         <div className="stat-card">
