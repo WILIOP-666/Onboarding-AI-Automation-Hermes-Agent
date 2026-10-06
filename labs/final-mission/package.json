@@ -1,0 +1,7 @@
+{
+  "name": "lab-final-location-cascade",
+  "private": true,
+  "scripts": {
+    "test": "pnpm --dir ../.. exec vitest run labs/final-mission"
+  }
+}

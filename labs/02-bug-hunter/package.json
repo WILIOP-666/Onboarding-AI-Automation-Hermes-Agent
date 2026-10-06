@@ -1,0 +1,7 @@
+{
+  "name": "lab-02-bug-hunter",
+  "private": true,
+  "scripts": {
+    "test": "pnpm --dir ../.. exec vitest run labs/02-bug-hunter"
+  }
+}

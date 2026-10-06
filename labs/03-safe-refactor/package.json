@@ -1,0 +1,7 @@
+{
+  "name": "lab-03-safe-refactor",
+  "private": true,
+  "scripts": {
+    "test": "pnpm --dir ../.. exec vitest run labs/03-safe-refactor"
+  }
+}
