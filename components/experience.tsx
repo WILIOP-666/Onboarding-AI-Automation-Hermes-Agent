@@ -1141,21 +1141,27 @@ function Presentation({
           </div>
           <div className={`slide-visual slide-visual-${state.slide}`}>
             {state.slide === 2 && (
-              <figure className="slide-brand">
+              <figure className="slide-cli-preview">
                 <Image
-                  src="/images/hermes-agent-logo.svg"
-                  alt="Hermes Agent logo by NousResearch"
-                  width={128}
-                  height={128}
+                  src="/images/hermes-cli-preview.svg"
+                  alt="Official stylized preview of the Hermes CLI terminal interface"
+                  fill
+                  sizes="(max-width: 640px) 100vw, 50vw"
                 />
                 <figcaption>
-                  Hermes Agent ·{" "}
+                  <Image
+                    src="/images/hermes-agent-logo.svg"
+                    alt=""
+                    width={24}
+                    height={24}
+                  />
+                  <span>Stylized CLI preview · </span>
                   <a
-                    href="https://github.com/NousResearch/hermes-agent/tree/main/assets"
+                    href="https://hermes-agent.nousresearch.com/docs/user-guide/cli/"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    NousResearch
+                    Hermes docs
                   </a>
                 </figcaption>
               </figure>
