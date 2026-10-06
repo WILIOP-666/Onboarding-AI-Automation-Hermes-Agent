@@ -4710,6 +4710,122 @@ body {
   text-align: center;
 }
 
+.slide-visual > .mission-prompt-card,
+.slide-visual > .next-step-card {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  gap: 10px;
+}
+
+.mission-prompt-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.mission-prompt-head > div {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.mission-prompt-head > div > span,
+.mission-proof > span {
+  color: #166534;
+  font: 7px var(--mono);
+  letter-spacing: 0.06em;
+}
+
+.mission-prompt-head > div > b {
+  color: var(--ink-strong);
+  font-size: 10px;
+}
+
+.mission-prompt-head .copy-button {
+  flex: none;
+  min-height: 28px;
+  padding: 5px 7px;
+  font-size: 8px;
+}
+
+.mission-prompt-card > p {
+  margin: 0;
+  padding: 9px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fcfcf2;
+  color: #374151;
+  font-size: 9px;
+  line-height: 1.65;
+}
+
+.mission-proof {
+  padding: 8px 9px;
+  border: 1px solid #b9f36a;
+  border-radius: 8px;
+  background: #f3fbe8;
+}
+
+.mission-proof ul {
+  display: grid;
+  gap: 4px;
+  margin: 6px 0 0;
+  padding-left: 14px;
+  color: #374151;
+  font-size: 8px;
+  line-height: 1.4;
+}
+
+.next-step-card {
+  align-content: center;
+}
+
+.next-step-card ol {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.next-step-card li {
+  display: grid;
+  grid-template-columns: 22px 52px minmax(0, 1fr);
+  align-items: center;
+  gap: 7px;
+  min-height: 33px;
+  padding: 5px 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fcfcf2;
+  color: #374151;
+  font-size: 9px;
+}
+
+.next-step-card li > span {
+  color: #166534;
+  font: 7px var(--mono);
+}
+
+.next-step-card li > small {
+  color: #6b7280;
+  font-size: 8px;
+}
+
+.next-step-card li:last-child {
+  border-color: #b9f36a;
+  background: #f3fbe8;
+}
+
+.next-step-card > p {
+  margin: 0;
+  color: #166534;
+  font-size: 9px;
+  text-align: center;
+}
+
 @media (max-width: 640px) {
   .slide-cli-preview {
     height: 170px;

@@ -316,8 +316,15 @@ const slides = [
     note: "Ask the group to name the checkpoint before dependency installs, destructive data changes, external writes, commits, pushes, or deployments.",
   },
   {
+    title: "Your first mission: map before you edit.",
+    kicker: "10 / Start here · Code Detective",
+    body: "Take ten minutes to learn the repository without changing a file. A good map lets a teammate find the entry point and follow one real data path.",
+    visual: [],
+    note: "Open Missions → Code Detective. Copy the task into Hermes, ask it to cite paths and symbols, then compare its map with the files yourself. The working tree should remain unchanged.",
+  },
+  {
     title: "Never trust generated work on sight.",
-    kicker: "10 / Evidence is the handoff",
+    kicker: "11 / Evidence is the handoff",
     body: "Review the diff, tests, assumptions, edge cases, security boundaries, and scope. A confident summary is not verification.",
     visual: [
       "DIFF  ·  Is this the change we asked for?",
@@ -326,6 +333,13 @@ const slides = [
       "JUDGMENT  ·  What still needs a human?",
     ],
     note: "End with the idea that the engineer owns the outcome.",
+  },
+  {
+    title: "Take one better habit back to work.",
+    kicker: "12 / Your next step",
+    body: "Choose one small, repeatable, low-risk task. Give Hermes a clear outcome and boundaries, ask it to inspect before editing, then review the evidence before anything ships.",
+    visual: [],
+    note: "Invite each participant to name one task they will try, the boundary they will set, and the evidence they will check.",
   },
 ];
 
@@ -1283,6 +1297,54 @@ function Presentation({
                   </small>
                 </div>
                 <p>Review the diff → approve commit, push, or deployment</p>
+              </div>
+            ) : state.slide === 9 ? (
+              <div className="mission-prompt-card">
+                <div className="mission-prompt-head">
+                  <div>
+                    <span>MISSION 01 · 10 MIN · NO FILE CHANGES</span>
+                    <b>{missions[0].title}</b>
+                  </div>
+                  <CopyBlock
+                    title="Copy mission prompt"
+                    text={missions[0].task}
+                  />
+                </div>
+                <p>{missions[0].task}</p>
+                <div className="mission-proof">
+                  <span>SHOW YOUR MAP</span>
+                  <ul>
+                    <li>Purpose, entry point, and key modules</li>
+                    <li>One traced data path with file evidence</li>
+                    <li>Facts separated from assumptions</li>
+                  </ul>
+                </div>
+              </div>
+            ) : state.slide === 11 ? (
+              <div className="next-step-card">
+                <ol>
+                  <li>
+                    <span>01</span>
+                    <b>Pick</b>
+                    <small>One small, repeatable task</small>
+                  </li>
+                  <li>
+                    <span>02</span>
+                    <b>Bound</b>
+                    <small>Outcome, scope, and no-go actions</small>
+                  </li>
+                  <li>
+                    <span>03</span>
+                    <b>Inspect</b>
+                    <small>Ask for a plan before code changes</small>
+                  </li>
+                  <li>
+                    <span>04</span>
+                    <b>Verify</b>
+                    <small>Review the diff and test evidence</small>
+                  </li>
+                </ol>
+                <p>You own the result. Hermes helps you get there.</p>
               </div>
             ) : (
               slide.visual.map((line, i) => (
