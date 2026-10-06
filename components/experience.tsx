@@ -302,8 +302,22 @@ const slides = [
     note: "Have participants repeat the sequence before the first mission.",
   },
   {
+    title: "Trace the bug before touching the code.",
+    kicker: "08 / Live demo · Bug Hunter",
+    body: "A registration appears twice when the same email arrives with different capitalization. Follow the evidence from the report to the comparison logic, then prove the fix with a regression test.",
+    visual: [],
+    note: "Narrate each search. Confirm the duplicate path in the source, make the smallest correction, and run the focused regression test before reviewing the diff.",
+  },
+  {
+    title: "Give Hermes room to work. Keep approval human.",
+    kicker: "09 / Boundaries & approval",
+    body: "Reading files, drafting changes, and running local checks can fit inside a scoped task. External or hard-to-reverse actions need an explicit human checkpoint and a review of what will happen.",
+    visual: [],
+    note: "Ask the group to name the checkpoint before dependency installs, destructive data changes, external writes, commits, pushes, or deployments.",
+  },
+  {
     title: "Never trust generated work on sight.",
-    kicker: "08 / Evidence is the handoff",
+    kicker: "10 / Evidence is the handoff",
     body: "Review the diff, tests, assumptions, edge cases, security boundaries, and scope. A confident summary is not verification.",
     visual: [
       "DIFF  ·  Is this the change we asked for?",
@@ -1117,7 +1131,7 @@ function Presentation({
   return (
     <div className="presentation-page">
       <PageIntro
-        eyebrow="PRESENTATION MODE · 8 SLIDES"
+        eyebrow={`PRESENTATION MODE · ${slides.length} SLIDES`}
         title="The agent briefing."
         subtitle="A projection-friendly introduction. Use ← and → to move through the session."
         action={
@@ -1131,7 +1145,7 @@ function Presentation({
           <span>{slide.kicker}</span>
           <span>
             AI AGENT PLAYGROUND <i /> {String(state.slide + 1).padStart(2, "0")}{" "}
-            / 08
+            / {String(slides.length).padStart(2, "0")}
           </span>
         </div>
         <div className="slide-content">
@@ -1218,6 +1232,58 @@ function Presentation({
                   ))}
                 </ol>
               </div>
+            ) : state.slide === 7 ? (
+              <div className="mission-demo">
+                <div className="mission-demo-report">
+                  <span>BUG REPORT</span>
+                  <strong>One person. Two registrations.</strong>
+                  <code>kai@example.com</code>
+                  <code>Kai@Example.com</code>
+                </div>
+                <ol>
+                  <li>
+                    <span>01</span>
+                    <b>Trace</b>
+                    <small>Find the registration path</small>
+                  </li>
+                  <li>
+                    <span>02</span>
+                    <b>Explain</b>
+                    <small>Compare email matching</small>
+                  </li>
+                  <li>
+                    <span>03</span>
+                    <b>Correct</b>
+                    <small>Normalize at the boundary</small>
+                  </li>
+                  <li>
+                    <span>04</span>
+                    <b>Prove</b>
+                    <small>Add regression test · inspect diff</small>
+                  </li>
+                </ol>
+              </div>
+            ) : state.slide === 8 ? (
+              <div className="approval-boundaries">
+                <div className="approval-lane">
+                  <span>SCOPED WORK</span>
+                  <b>Read · edit · run local checks</b>
+                  <small>Stay inside the task and review the diff.</small>
+                </div>
+                <div className="approval-gate">
+                  <span aria-hidden="true">↓</span>
+                  HUMAN CHECKPOINT
+                  <span aria-hidden="true">↓</span>
+                </div>
+                <div className="approval-lane approval-lane-gated">
+                  <span>EXPLICIT APPROVAL</span>
+                  <b>External writes · destructive changes · ship</b>
+                  <small>
+                    Confirm the action and its target before proceeding.
+                  </small>
+                </div>
+                <p>Review the diff → approve commit, push, or deployment</p>
+              </div>
             ) : (
               slide.visual.map((line, i) => (
                 <div
@@ -1239,7 +1305,8 @@ function Presentation({
           </button>
           <div className="slide-controls">
             <span className="slide-progress-label">
-              {String(state.slide + 1).padStart(2, "0")} <i /> 08
+              {String(state.slide + 1).padStart(2, "0")} <i />{" "}
+              {String(slides.length).padStart(2, "0")}
             </span>
             <button
               className="slide-control"

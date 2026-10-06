@@ -4587,6 +4587,129 @@ body {
   font-size: 7px;
 }
 
+.slide-visual > .mission-demo,
+.slide-visual > .approval-boundaries {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  gap: 10px;
+}
+
+.mission-demo-report {
+  display: grid;
+  gap: 5px;
+  padding: 9px;
+  border: 1px solid #e5e7eb;
+  border-radius: 9px;
+  background: #fcfcf2;
+}
+
+.mission-demo-report > span,
+.approval-lane > span {
+  color: #166534;
+  font: 7px var(--mono);
+  letter-spacing: 0.07em;
+}
+
+.mission-demo-report strong {
+  color: var(--ink-strong);
+  font-size: 10px;
+}
+
+.mission-demo-report code {
+  width: fit-content;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: #f3f4f6;
+  color: #374151;
+  font: 8px var(--mono);
+}
+
+.mission-demo > ol {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mission-demo li {
+  display: grid;
+  grid-template-columns: 20px 52px minmax(0, 1fr);
+  align-items: center;
+  gap: 6px;
+  min-height: 25px;
+  padding: 3px 7px;
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+  color: #374151;
+  font-size: 8px;
+}
+
+.mission-demo li > span {
+  color: #166534;
+  font: 7px var(--mono);
+}
+
+.mission-demo li > small {
+  color: #6b7280;
+  font-size: 7px;
+}
+
+.mission-demo li:last-child {
+  border-color: #b9f36a;
+  background: #f3fbe8;
+}
+
+.approval-boundaries {
+  align-content: center;
+}
+
+.approval-lane {
+  display: grid;
+  gap: 5px;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+  background: #fcfcf2;
+}
+
+.approval-lane b {
+  color: var(--ink-strong);
+  font-size: 10px;
+}
+
+.approval-lane small,
+.approval-boundaries > p {
+  color: #6b7280;
+  font-size: 8px;
+  line-height: 1.5;
+}
+
+.approval-lane-gated {
+  border-color: #b9f36a;
+  background: #f3fbe8;
+}
+
+.approval-gate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #166534;
+  font: 7px var(--mono);
+  letter-spacing: 0.06em;
+}
+
+.approval-gate span {
+  font-size: 12px;
+}
+
+.approval-boundaries > p {
+  margin: 0;
+  text-align: center;
+}
+
 @media (max-width: 640px) {
   .slide-cli-preview {
     height: 170px;
