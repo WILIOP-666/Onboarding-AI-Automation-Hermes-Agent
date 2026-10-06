@@ -1583,7 +1583,7 @@ button {
 .mission-feature h2 {
   font: 600 19px var(--display);
   letter-spacing: -0.035em;
-  color: var(--ink-strong);
+  color: var(--ink);
   margin: 22px 0 5px;
 }
 .mission-feature p {
