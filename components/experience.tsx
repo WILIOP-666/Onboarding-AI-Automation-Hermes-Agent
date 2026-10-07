@@ -1545,6 +1545,18 @@ function Learn() {
           </div>
         ))}
       </div>
+      <figure className="prompt-anatomy-figure">
+        <Image
+          src="/images/prompt-anatomy.webp"
+          alt="A prompt sheet connects five visual building blocks: repository context, a clear objective, constraints, success criteria, and test verification."
+          width={1774}
+          height={887}
+          sizes="(max-width: 640px) 100vw, 90vw"
+        />
+        <figcaption>
+          CONTEXT · OBJECTIVE · CONSTRAINTS · SUCCESS · VERIFICATION
+        </figcaption>
+      </figure>
       <section className="prompt-example">
         <div className="prompt-head">
           <div>

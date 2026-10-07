@@ -4989,3 +4989,32 @@ body {
     line-height: 1.5;
   }
 }
+
+.prompt-anatomy-figure {
+  margin: 12px 0 0;
+  overflow: hidden;
+  border: 1px dashed #d8ddd1;
+  border-radius: 10px;
+  background: #fcfcf2;
+}
+
+.prompt-anatomy-figure > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.prompt-anatomy-figure figcaption {
+  padding: 9px 12px;
+  border-top: 1px dashed #d8ddd1;
+  color: #4b5563;
+  font: 8px var(--mono);
+  letter-spacing: 0.07em;
+}
+
+@media (max-width: 640px) {
+  .prompt-anatomy-figure figcaption {
+    font-size: 7px;
+    line-height: 1.5;
+  }
+}
