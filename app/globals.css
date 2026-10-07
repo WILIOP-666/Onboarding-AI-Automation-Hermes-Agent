@@ -2172,7 +2172,7 @@ button {
 .recovery-card h2 {
   font: 600 18px var(--display);
   margin: 6px 0 13px;
-  color: #e7ece3;
+  color: var(--ink);
 }
 .recovery-steps {
   display: flex;
