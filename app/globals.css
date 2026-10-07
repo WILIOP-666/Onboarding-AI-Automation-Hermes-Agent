@@ -4914,3 +4914,78 @@ body {
     aspect-ratio: 4 / 3;
   }
 }
+
+.journey-panel,
+.work-cycle-panel {
+  margin-top: 17px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+}
+
+.journey-panel-copy,
+.work-cycle-copy {
+  padding: 18px 20px 0;
+}
+
+.journey-panel-copy h2,
+.work-cycle-copy h2 {
+  margin: 7px 0 5px;
+  color: var(--ink-strong);
+  font: 600 20px/1.25 var(--display);
+  letter-spacing: -0.035em;
+}
+
+.journey-panel-copy p,
+.work-cycle-copy p {
+  max-width: 620px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.journey-figure,
+.work-cycle-figure {
+  position: relative;
+  margin: 14px;
+  overflow: hidden;
+  border: 1px dashed #d8ddd1;
+  border-radius: 10px;
+  background: #fcfcf2;
+}
+
+.journey-figure > img,
+.work-cycle-figure > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.journey-figure figcaption,
+.work-cycle-figure figcaption {
+  padding: 9px 12px;
+  border-top: 1px dashed #d8ddd1;
+  color: #4b5563;
+  font: 8px var(--mono);
+  letter-spacing: 0.07em;
+}
+
+@media (max-width: 640px) {
+  .journey-panel-copy,
+  .work-cycle-copy {
+    padding: 15px 15px 0;
+  }
+
+  .journey-figure,
+  .work-cycle-figure {
+    margin: 12px;
+  }
+
+  .journey-figure figcaption,
+  .work-cycle-figure figcaption {
+    font-size: 7px;
+    line-height: 1.5;
+  }
+}

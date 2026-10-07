@@ -970,6 +970,28 @@ function Overview({
           ))}
         </div>
       </section>
+      <section className="journey-panel">
+        <div className="journey-panel-copy">
+          <div className="eyebrow">
+            <span className="eyebrow-line" /> YOUR LEARNING PATH
+          </div>
+          <h2>From first prompt to confident review.</h2>
+          <p>
+            Meet the agent, prepare your workspace, try a bounded task, and
+            finish by checking the evidence yourself.
+          </p>
+        </div>
+        <figure className="journey-figure">
+          <Image
+            src="/images/onboarding-journey-map.webp"
+            alt="A winding path illustrates five onboarding stages: meeting the agent, preparing a repository, giving it a task, reviewing code and tests, and completing a change."
+            width={1942}
+            height={809}
+            sizes="(max-width: 640px) 100vw, 90vw"
+          />
+          <figcaption>MEET · PREPARE · PRACTICE · REVIEW · SHIP</figcaption>
+        </figure>
+      </section>
     </>
   );
 }
@@ -1628,6 +1650,26 @@ function HermesGuide() {
         />
         <figcaption>LOCAL REPOSITORY · TOOL LOOP · HUMAN REVIEW</figcaption>
       </figure>
+      <section className="work-cycle-panel">
+        <div className="work-cycle-copy">
+          <span className="card-kicker">THE HUMAN-SUPERVISED LOOP</span>
+          <h2>Give a task. Check every step.</h2>
+          <p>
+            Hermes inspects and proposes; your tests and review decide what
+            becomes part of the repository.
+          </p>
+        </div>
+        <figure className="work-cycle-figure">
+          <Image
+            src="/images/hermes-work-cycle.webp"
+            alt="A looping workflow shows an engineer setting a task, Hermes inspecting files and proposing a change, tests running, and the engineer reviewing and approving the diff."
+            width={1942}
+            height={809}
+            sizes="(max-width: 640px) 100vw, 90vw"
+          />
+          <figcaption>BOUNDED TASK · INSPECTION · TESTS · HUMAN APPROVAL</figcaption>
+        </figure>
+      </section>
       <section className="hermes-install panel">
         <div>
           <span className="card-kicker">SET UP YOUR LOCAL AGENT</span>
