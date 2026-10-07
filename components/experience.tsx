@@ -67,6 +67,8 @@ const missions: {
   title: string;
   short: string;
   objective: string;
+  image: string;
+  imageAlt: string;
   scenario: string;
   time: string;
   xp: number;
@@ -83,6 +85,9 @@ const missions: {
     title: "Code Detective",
     short: "Explore before you edit",
     objective: "Build a map of an unfamiliar codebase without changing a file.",
+    image: "/images/mission-code-detective.webp",
+    imageAlt:
+      "A developer maps connected folders and data paths with a magnifying glass.",
     scenario:
       "You have just joined a team with a service you have never seen. A teammate asks you to explain how a request moves through it before anyone proposes a fix.",
     time: "10 min",
@@ -110,6 +115,9 @@ const missions: {
     short: "Reproduce, trace, then fix",
     objective:
       "Find the root cause of duplicate registrations caused by email casing.",
+    image: "/images/mission-bug-hunter.webp",
+    imageAlt:
+      "A magnifying glass traces a green-highlighted bug to a verified fix.",
     scenario:
       "Support reports that john@example.com, John@Example.com, and JOHN@example.com can create separate accounts.",
     time: "15 min",
@@ -138,6 +146,9 @@ const missions: {
     short: "Improve structure; keep behavior",
     objective:
       "Reduce complexity while preserving externally visible behavior.",
+    image: "/images/mission-safe-refactor.webp",
+    imageAlt:
+      "Tangled code paths are reorganized into a cleaner structure while preserving their connections.",
     scenario:
       "A working service has grown difficult to change. Tests cover the contract, but the implementation mixes validation, mapping, and side effects.",
     time: "15 min",
@@ -166,6 +177,9 @@ const missions: {
     short: "Make repeated work safe",
     objective:
       "Prevent duplicate records when a form is submitted more than once.",
+    image: "/images/mission-agent-workflow.webp",
+    imageAlt:
+      "A loop of symbols represents inspection, planning, editing, and verification.",
     scenario:
       "A user double-clicks Submit after a slow response. Two records appear even though the form only looked like one action.",
     time: "15 min",
@@ -194,6 +208,8 @@ const missions: {
     short: "Your final production-safety mission",
     objective:
       "Resolve inconsistent Country → State → City combinations in a profile update flow.",
+    image: "/images/mission-location-cascade.webp",
+    imageAlt: "Map pins connect a country map to a state map and a city map.",
     scenario:
       "Users report that profile updates sometimes save the wrong country, state, and city. The report may describe a symptom rather than the root cause.",
     time: "20 min",
@@ -1601,6 +1617,17 @@ function HermesGuide() {
           <span className="live-dot" /> LOCAL FIRST
         </div>
       </section>
+      <figure className="hermes-architecture">
+        <Image
+          src="/images/hermes-architecture.webp"
+          alt="Hermes works inside the local repository and tool loop, then presents a reviewable change for the engineer to approve or reject."
+          width={1536}
+          height={1024}
+          loading="eager"
+          sizes="(max-width: 640px) 100vw, 90vw"
+        />
+        <figcaption>LOCAL REPOSITORY · TOOL LOOP · HUMAN REVIEW</figcaption>
+      </figure>
       <section className="hermes-install panel">
         <div>
           <span className="card-kicker">SET UP YOUR LOCAL AGENT</span>
@@ -1795,27 +1822,38 @@ function MissionsPage({ state }: { state: Progress }) {
             className={`mission-feature ${i === 4 ? "mission-feature-final" : ""}`}
             key={m.id}
           >
-            <div className="feature-head">
-              <span>MISSION {m.number}</span>
-              <span className="feature-xp">
-                {state.completed.includes(m.id) ? (
-                  <>
-                    <Check size={14} /> COMPLETE
-                  </>
-                ) : (
-                  `+${m.xp} XP`
-                )}
-              </span>
+            <div className="mission-feature-art">
+              <Image
+                src={m.image}
+                alt={m.imageAlt}
+                width={1536}
+                height={1024}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
             </div>
-            <h2>{m.title}</h2>
-            <p>{m.objective}</p>
-            <div className="feature-bottom">
-              <span>
-                <Clock3 size={14} />
-                {m.time}
-              </span>
-              <span>{m.difficulty}</span>
-              <ArrowUpRight size={17} />
+            <div className="mission-feature-content">
+              <div className="feature-head">
+                <span>MISSION {m.number}</span>
+                <span className="feature-xp">
+                  {state.completed.includes(m.id) ? (
+                    <>
+                      <Check size={14} /> COMPLETE
+                    </>
+                  ) : (
+                    `+${m.xp} XP`
+                  )}
+                </span>
+              </div>
+              <h2>{m.title}</h2>
+              <p>{m.objective}</p>
+              <div className="feature-bottom">
+                <span>
+                  <Clock3 size={14} />
+                  {m.time}
+                </span>
+                <span>{m.difficulty}</span>
+                <ArrowUpRight size={17} />
+              </div>
             </div>
           </Link>
         ))}
