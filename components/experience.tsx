@@ -1238,6 +1238,32 @@ function Presentation({
             <p>{slide.body}</p>
           </div>
           <div className={`slide-visual slide-visual-${state.slide}`}>
+            {[7, 8, 9, 10, 11].includes(state.slide) && (
+              <figure className="slide-editorial-art">
+                <Image
+                  src={
+                    [
+                      "/images/mission-bug-hunter.webp",
+                      "/images/hermes-architecture.webp",
+                      "/images/mission-code-detective.webp",
+                      "/images/mission-safe-refactor.webp",
+                      "/images/onboarding-journey-map.webp",
+                    ][state.slide - 7]
+                  }
+                  alt={
+                    [
+                      "Illustration of tracing a bug through a code path to a verified fix",
+                      "Illustration of Hermes working locally while a human reviews and approves the change",
+                      "Illustration of mapping an unfamiliar repository before making changes",
+                      "Illustration of reviewing a code diff and test results before accepting the change",
+                      "Illustration of a learner progressing through a sequence of practical agent skills",
+                    ][state.slide - 7]
+                  }
+                  fill
+                  sizes="(max-width: 640px) 100vw, 42vw"
+                />
+              </figure>
+            )}
             {state.slide === 2 && (
               <figure className="slide-cli-preview">
                 <Image

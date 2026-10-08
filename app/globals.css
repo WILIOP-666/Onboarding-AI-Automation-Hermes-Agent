@@ -1174,6 +1174,18 @@ button {
   align-items: center;
   gap: 9px;
 }
+.slide-editorial-art {
+  position: relative;
+  height: 104px;
+  margin: -17px -15px 4px;
+  overflow: hidden;
+  border-radius: 4px 4px 0 0;
+  background: #fcfcf2;
+}
+.slide-editorial-art img {
+  object-fit: cover;
+  object-position: center 48%;
+}
 .visual-primary {
   color: var(--lime) !important;
 }
@@ -2691,6 +2703,10 @@ button {
   .slide-visual {
     font-size: 8px;
     padding: 12px;
+  }
+  .slide-editorial-art {
+    height: 86px;
+    margin: -12px -12px 2px;
   }
   .timeline-content {
     grid-template-columns: 1fr;
