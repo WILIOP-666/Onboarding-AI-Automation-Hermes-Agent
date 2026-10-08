@@ -11,6 +11,7 @@ test("primary learning pages have no WCAG A/AA axe violations", async ({
     "/presentation",
     "/learn",
     "/hermes",
+    "/missions",
     "/missions/02-bug-hunter",
     "/playground",
     "/instructor",
@@ -47,6 +48,8 @@ test("responsive layouts have no horizontal overflow at target screen sizes", as
   ] as const;
   const cases = [
     { route: "/", name: "overview" },
+    { route: "/learn", name: "learn" },
+    { route: "/hermes", name: "hermes" },
     { route: "/presentation", name: "presentation" },
     { route: "/playground", name: "playground" },
     { route: "/missions/02-bug-hunter", name: "mission" },

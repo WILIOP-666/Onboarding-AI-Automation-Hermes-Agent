@@ -22,18 +22,44 @@ test("presentation supports keyboard navigation and remembers the selected slide
   page,
 }) => {
   await page.goto("/presentation");
-  await expect(page.getByText("01 / 08")).toBeVisible();
+  await expect(page.getByText("01 / 12")).toBeVisible();
   await page.keyboard.press("ArrowRight");
-  await expect(page.getByText("02 / 08")).toBeVisible();
+  await expect(page.getByText("02 / 12")).toBeVisible();
+  await expect(
+    page.getByRole("progressbar", { name: "Presentation progress" }),
+  ).toHaveAttribute("aria-valuetext", "Slide 2 of 12");
+  await page.keyboard.press("PageDown");
+  await expect(page.getByText("03 / 12")).toBeVisible();
+  await page.keyboard.press("PageUp");
+  await expect(page.getByText("02 / 12")).toBeVisible();
   const cue = page.getByRole("button", { name: /Facilitator cue/ });
   await cue.focus();
   await page.keyboard.press("Space");
   await expect(
     page.getByText("FACILITATOR CUE", { exact: true }),
   ).toBeVisible();
-  await expect(page.getByText("02 / 08")).toBeVisible();
+  await expect(page.getByText("02 / 12")).toBeVisible();
   await page.reload();
-  await expect(page.getByText("02 / 08")).toBeVisible();
+  await expect(page.getByText("02 / 12")).toBeVisible();
+});
+
+test("mobile navigation exposes state and closes with Escape", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto("/");
+  const toggle = page.locator(".menu-toggle");
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
+  await toggle.click();
+  await expect(
+    page
+      .getByRole("navigation", { name: "Main navigation" })
+      .getByRole("link", { name: "Learn the basics" }),
+  ).toBeVisible();
+  await expect(toggle).toHaveAttribute("aria-expanded", "true");
+  await page.keyboard.press("Escape");
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
+  await expect(toggle).toBeFocused();
 });
 
 test("completion restart asks before clearing training progress", async ({

@@ -1575,7 +1575,7 @@ button {
   font-size: 8px;
 }
 .feature-xp {
-  color: var(--lime);
+  color: #168344;
   display: flex;
   gap: 4px;
   align-items: center;
@@ -5017,4 +5017,87 @@ body {
     font-size: 7px;
     line-height: 1.5;
   }
+}
+
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 100;
+  transform: translateY(-160%);
+  padding: 10px 14px;
+  border: 2px solid #1d4ed8;
+  border-radius: 8px;
+  background: #fff;
+  color: #1e3a8a;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+@media (min-width: 641px) and (max-width: 900px) {
+  .sidebar {
+    width: 208px;
+    padding: 16px 13px;
+  }
+
+  .brand > span:last-child,
+  .side-label,
+  .learner-copy,
+  .learner-card > svg,
+  .nav-link:not(.nav-active),
+  .nav-link .nav-count,
+  .sidebar-bottom {
+    display: initial;
+  }
+
+  .brand {
+    padding: 3px 8px 24px;
+  }
+
+  .learner-card {
+    justify-content: flex-start;
+    padding: 10px 9px;
+  }
+
+  .main-nav {
+    align-items: stretch;
+  }
+
+  .nav-link {
+    width: 100%;
+    justify-content: flex-start;
+    font-size: 12px;
+  }
+
+  .nav-dot {
+    width: 5px;
+    height: 5px;
+  }
+
+  .workspace {
+    margin-left: 208px;
+  }
+}
+
+@media (max-width: 640px) {
+  .menu-toggle {
+    width: 44px;
+    height: 44px;
+    flex: none;
+    border: 1px solid #bfdbfe;
+    border-radius: 12px;
+    background: #fff;
+    color: #1d4ed8;
+  }
+
+  .nav-link {
+    min-height: 44px;
+  }
+}
+
+.slide-progress-track[role="progressbar"] {
+  position: relative;
 }

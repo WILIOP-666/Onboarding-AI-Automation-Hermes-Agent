@@ -47,7 +47,7 @@ Each lab README includes its focused test command. The starter tests for mission
 | Route                         | Purpose                                                         |
 | ----------------------------- | --------------------------------------------------------------- |
 | `/`                           | Welcome, learning outcomes, timeline, optional participant name |
-| `/presentation`               | Eight projection-friendly slides; use ← and → to navigate       |
+| `/presentation`               | Twelve projection-friendly slides; use ← and → to navigate      |
 | `/learn`                      | Automation loop, chatbot/agent comparison, task builder         |
 | `/hermes`                     | Local workflow, tools, and troubleshooting                      |
 | `/playground`                 | XP, level, mission progress, and completion status              |

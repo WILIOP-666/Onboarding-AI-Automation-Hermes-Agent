@@ -3,7 +3,7 @@
 | Capability       | Scope                                                              | Depends on       | Status       |
 | ---------------- | ------------------------------------------------------------------ | ---------------- | ------------ |
 | core-shell       | Responsive navigation, accessible shared layout, route metadata    | —                | Implementing |
-| presentation     | Eight keyboard-operable teaching slides and session timing         | core-shell       | Implementing |
+| presentation     | Twelve keyboard-operable teaching slides and session timing        | core-shell       | Implementing |
 | learning-content | Practical AI automation and agent learning pages                   | core-shell       | Implementing |
 | hermes-guide     | Local setup, workflow, and recovery guidance                       | learning-content | Implementing |
 | challenge-engine | Five guided missions, progressive hints, prompt copy, lab files    | learning-content | Implementing |

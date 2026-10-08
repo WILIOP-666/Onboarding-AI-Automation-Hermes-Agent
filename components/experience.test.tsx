@@ -84,6 +84,54 @@ describe("training interactions", () => {
     );
   });
 
+  it("marks nested missions in navigation and exposes keyboard navigation controls", async () => {
+    path = "/missions/04-agent-workflow";
+    render(<Experience />);
+    const missionsLink = screen.getByRole("link", { name: /Missions/ });
+    expect(missionsLink.getAttribute("aria-current")).toBe("page");
+    expect(screen.getByText(/MISSION 04/, { selector: "strong" })).toBeTruthy();
+    expect(
+      screen
+        .getByRole("link", { name: "Skip to content" })
+        .getAttribute("href"),
+    ).toBe("#main-content");
+
+    path = "/presentation";
+    cleanup();
+    render(<Experience />);
+    expect(
+      screen
+        .getByRole("progressbar", { name: "Presentation progress" })
+        .getAttribute("aria-valuetext"),
+    ).toBe("Slide 1 of 12");
+    fireEvent.keyDown(window, { key: "ArrowDown" });
+    await waitFor(() =>
+      expect(
+        screen
+          .getByRole("progressbar", { name: "Presentation progress" })
+          .getAttribute("aria-valuenow"),
+      ).toBe("2"),
+    );
+    fireEvent.keyDown(window, { key: "PageUp" });
+    await waitFor(() =>
+      expect(
+        screen
+          .getByRole("progressbar", { name: "Presentation progress" })
+          .getAttribute("aria-valuenow"),
+      ).toBe("1"),
+    );
+  });
+
+  it("closes the mobile navigation on Escape and restores focus to its toggle", () => {
+    render(<Experience />);
+    const toggle = screen.getByRole("button", { name: "Open navigation" });
+    fireEvent.click(toggle);
+    expect(toggle.getAttribute("aria-expanded")).toBe("true");
+    fireEvent.keyDown(window, { key: "Escape" });
+    expect(toggle.getAttribute("aria-expanded")).toBe("false");
+    expect(document.activeElement).toBe(toggle);
+  });
+
   it("copies task text and confirms a progress reset", async () => {
     Object.defineProperty(navigator, "clipboard", {
       configurable: true,

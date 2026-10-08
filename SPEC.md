@@ -8,7 +8,7 @@ A no-account, two-hour interactive engineering onboarding for interns learning p
 
 Routes: `/`, `/presentation`, `/learn`, `/hermes`, `/playground`, `/missions`, `/missions/01-code-detective`, `/missions/02-bug-hunter`, `/missions/03-safe-refactor`, `/missions/04-agent-workflow`, `/final-mission`, `/cheatsheet`, `/instructor`, `/completion`.
 
-Learners move from automation fundamentals through an eight-slide presentation, Hermes setup and prompting, four guided missions, a less-guided final mission, and a completion summary. All primary actions provide a real outcome.
+Learners move from automation fundamentals through a twelve-slide presentation, Hermes setup and prompting, four guided missions, a less-guided final mission, and a completion summary. All primary actions provide a real outcome.
 
 ## State and quality
 

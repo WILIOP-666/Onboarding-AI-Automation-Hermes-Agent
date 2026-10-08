@@ -541,9 +541,34 @@ function Shell({
 }) {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const closeMenu = useCallback(() => {
+    setMenuOpen(false);
+    menuButtonRef.current?.focus();
+  }, []);
+  const activeMission = missions.find(
+    (mission) =>
+      pathname === `/missions/${mission.id}` ||
+      (mission.id === "final-mission" && pathname === "/final-mission"),
+  );
+  const breadcrumb = activeMission
+    ? `MISSION ${activeMission.number} · ${activeMission.title.toUpperCase()}`
+    : (nav.find((item) => item.href === pathname)?.label.toUpperCase() ??
+      "MISSION");
+  useEffect(() => {
+    if (!menuOpen) return;
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") closeMenu();
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [closeMenu, menuOpen]);
   const level = levelForXp(state.xp);
   return (
     <div className="app-frame">
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
       <aside className={`sidebar ${menuOpen ? "sidebar-open" : ""}`}>
         <Link className="brand" href="/">
           <span className="brand-mark">
@@ -564,9 +589,15 @@ function Shell({
           </div>
           <Gauge size={16} />
         </div>
-        <nav aria-label="Main navigation" className="main-nav">
+        <nav
+          id="primary-navigation"
+          aria-label="Main navigation"
+          className="main-nav"
+        >
           {nav.map((item) => {
-            const active = pathname === item.href;
+            const active =
+              pathname === item.href ||
+              (item.href === "/missions" && Boolean(activeMission));
             return (
               <Link
                 key={item.href}
@@ -611,24 +642,24 @@ function Shell({
         <button
           className="mobile-scrim"
           aria-label="Close navigation"
-          onClick={() => setMenuOpen(false)}
+          onClick={closeMenu}
         />
       )}
       <div className="workspace">
         <header className="topbar">
           <button
             className="menu-toggle"
-            aria-label="Open navigation"
-            onClick={() => setMenuOpen(true)}
+            ref={menuButtonRef}
+            aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+            aria-expanded={menuOpen}
+            aria-controls="primary-navigation"
+            onClick={() => setMenuOpen((open) => !open)}
           >
-            <Menu size={20} />
+            {menuOpen ? <ChevronLeft size={20} /> : <Menu size={20} />}
           </button>
           <div className="breadcrumbs">
             <span>TRAINING /</span>
-            <strong>
-              {nav.find((n) => n.href === pathname)?.label.toUpperCase() ||
-                "MISSION"}
-            </strong>
+            <strong>{breadcrumb}</strong>
           </div>
           <div className="topbar-right">
             <span className="live-dot" /> LOCAL PROGRESS{" "}
@@ -639,7 +670,7 @@ function Shell({
             </span>
           </div>
         </header>
-        <main id="main-content" className="main-content">
+        <main id="main-content" className="main-content" tabIndex={-1}>
           {children}
         </main>
         <footer className="footer">
@@ -987,6 +1018,7 @@ function Overview({
             alt="A winding path illustrates five onboarding stages: meeting the agent, preparing a repository, giving it a task, reviewing code and tests, and completing a change."
             width={1942}
             height={809}
+            loading="eager"
             sizes="(max-width: 640px) 100vw, 90vw"
           />
           <figcaption>MEET · PREPARE · PRACTICE · REVIEW · SHIP</figcaption>
@@ -1168,11 +1200,11 @@ function Presentation({
       ) {
         return;
       }
-      if (["ArrowRight", "PageDown", " "].includes(e.key)) {
+      if (["ArrowRight", "ArrowDown", "PageDown", " "].includes(e.key)) {
         e.preventDefault();
         move(1);
       }
-      if (["ArrowLeft", "PageUp"].includes(e.key)) {
+      if (["ArrowLeft", "ArrowUp", "PageUp"].includes(e.key)) {
         e.preventDefault();
         move(-1);
       }
@@ -1432,7 +1464,15 @@ function Presentation({
             <span>{slide.note}</span>
           </div>
         )}
-        <div className="slide-progress-track">
+        <div
+          className="slide-progress-track"
+          role="progressbar"
+          aria-label="Presentation progress"
+          aria-valuemin={1}
+          aria-valuemax={slides.length}
+          aria-valuenow={state.slide + 1}
+          aria-valuetext={`Slide ${state.slide + 1} of ${slides.length}`}
+        >
           <span
             style={{ width: `${((state.slide + 1) / slides.length) * 100}%` }}
           />
@@ -1551,6 +1591,7 @@ function Learn() {
           alt="A prompt sheet connects five visual building blocks: repository context, a clear objective, constraints, success criteria, and test verification."
           width={1774}
           height={887}
+          loading="eager"
           sizes="(max-width: 640px) 100vw, 90vw"
         />
         <figcaption>
@@ -1677,9 +1718,12 @@ function HermesGuide() {
             alt="A looping workflow shows an engineer setting a task, Hermes inspecting files and proposing a change, tests running, and the engineer reviewing and approving the diff."
             width={1942}
             height={809}
+            loading="eager"
             sizes="(max-width: 640px) 100vw, 90vw"
           />
-          <figcaption>BOUNDED TASK · INSPECTION · TESTS · HUMAN APPROVAL</figcaption>
+          <figcaption>
+            BOUNDED TASK · INSPECTION · TESTS · HUMAN APPROVAL
+          </figcaption>
         </figure>
       </section>
       <section className="hermes-install panel">
@@ -1882,6 +1926,7 @@ function MissionsPage({ state }: { state: Progress }) {
                 alt={m.imageAlt}
                 width={1536}
                 height={1024}
+                loading={i <= 1 ? "eager" : "lazy"}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             </div>

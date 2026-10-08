@@ -44,4 +44,4 @@ Participants should be able to explore an unfamiliar repository, explain an agen
 
 ## Presentation controls
 
-Use `←` and `→` to navigate the eight slides. A facilitator cue can be revealed below each slide. The complete timeline and keyboard reminder are also visible in the facilitator dashboard.
+Use `←` and `→` (or `Page Up` and `Page Down`) to navigate the twelve slides. A facilitator cue can be revealed below each slide. The complete timeline and keyboard reminder are also visible in the facilitator dashboard.
